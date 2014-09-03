@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="true">
+
+	<appender name="errorAppender" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="${APP_SERVER_LOG_ROOT}/restful-retek-service-error.log"/>
+	    <param name="maxFileSize" value="1MB" />
+	    <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p  [%c{1}] %m %n" />
+		</layout>    
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="levelMin" value="error" />
+			<param name="levelMax" value="error" />
+		</filter>  		
+	</appender>
+	
+	<appender name="debugAppender" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="${APP_SERVER_LOG_ROOT}/restful-retek-service-debug.log"/>
+	    <param name="maxFileSize" value="1MB" />
+	    <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p  [%c{1}] %m %n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="levelMin" value="debug" />
+			<param name="levelMax" value="debug" />
+		</filter>      
+	</appender>
+	
+    <logger name="com.myer.retek.webservice" additivity="false">
+        <level value="debug"/>
+        <appender-ref ref="debugAppender" /> 
+    </logger>
+	
+	<root> 
+		<priority value="error" />
+		<appender-ref ref="errorAppender" /> 
+	</root> 
+</log4j:configuration>

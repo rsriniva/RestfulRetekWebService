@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app id="WebApp_ID">
+	<display-name>RestfulRetekService</display-name>
+	
+	<!-- Servlets -->
+
+	<!-- Controllers -->
+	<servlet>
+		<servlet-name>ItemWebService</servlet-name>
+		<servlet-class>
+			com.myer.retek.webservice.controller.ItemWebServiceController
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ItemWebService</servlet-name>
+		<url-pattern>/ItemWebService.json</url-pattern>
+	</servlet-mapping>
+
+    <!-- Default welcome -->
+    <welcome-file-list>
+    	<welcome-file>index.jsp</welcome-file>
+    </welcome-file-list> 
+	
+	<!-- Resources -->
+	<resource-ref>
+		<description>RMS resource</description>
+		<res-ref-name>jdbc/rmsDS</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>	
+	
+</web-app>
